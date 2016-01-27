@@ -16,7 +16,7 @@ class Ports extends Endpoint {
      */
     public function getProducts($portCode) {
         $params = [
-            'portCode' => $portCode,
+            'port' => $portCode,
         ];
 
         return $this->getAll($params, 'products');

@@ -5,7 +5,7 @@ namespace ShoreEx\Endpoint;
 class Products extends Endpoint {
 
     protected $path = 'products';
-    protected $primaryKey = 'productcode';
+    protected $primaryKey = 'code';
 
 
     /**
@@ -17,7 +17,7 @@ class Products extends Endpoint {
      */
     public function getDates($productcode, $shipid = null, \DateTime $arrival = null, $duration = null) {
         $params = [
-            'productcode' => $productcode,
+            'code' => $productcode,
         ];
 
         if (!is_null($shipid)) {
@@ -43,8 +43,8 @@ class Products extends Endpoint {
      */
     public function getTimes($productcode, \DateTime $arrival) {
         $params = [
-            'productcode' => $productcode,
-            'arrival' => $arrival->format('Y-m-d'),
+            'code' => $productcode,
+            'date' => $arrival->format('Y-m-d'),
         ];
 
         return $this->getAll($params, 'times');

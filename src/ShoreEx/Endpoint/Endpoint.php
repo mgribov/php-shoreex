@@ -68,7 +68,7 @@ abstract class Endpoint {
         $path = $this->getPath();
         
         if (!is_null($function)) {
-            $path .= '/' . $function;
+            $path .= $function . '/';
         }
         
         return $this->http_client->get($path, $params);
@@ -79,7 +79,12 @@ abstract class Endpoint {
      * @return array 
      */
     public function getAll(array $params = array(), $func = null) {
-        return $this->http_client->get($this->getPath(), $params, $func);
+        $path = $this->getPath();
+        if (!is_null($func)) {
+            $path .= $func . '/';
+        }
+
+        return $this->http_client->get($path, $params, $func);
     }
 
     /**
@@ -95,7 +100,7 @@ abstract class Endpoint {
      * @return string 
      */
     public function getPath() {
-        return $this->prefix . $this->path;
+        return $this->prefix . $this->path . '/';
     }
     
 }
