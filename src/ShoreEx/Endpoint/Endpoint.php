@@ -50,7 +50,7 @@ abstract class Endpoint {
      * @return array
      */
     public function create(array $params = array()) {
-        return $this->http_client->post($this->getPath(), $params);
+        return $this->http_client->post($this->getPath(), $params, ['Content-Type' => 'application/json']);
     }
     
     /**

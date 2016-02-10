@@ -47,6 +47,9 @@ class Products extends Endpoint {
             'date' => $arrival->format('Y-m-d'),
         ];
 
+        // do not cache this data
+        $this->http_client->getHttpClient()->getStorage()->setCacheTime(0);
+
         return $this->getAll($params, 'times');
     }
 
