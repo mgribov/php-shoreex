@@ -2,7 +2,7 @@
 
 namespace ShoreEx\Client;
 
-use \Scrape\Client\Client as HttpClient;
+use \Scrape\Client\Client as Scraper;
 
 /**
  * Simple wrapper to bring individual Endpoint classes, HTTP client and HTTP storage together 
@@ -13,7 +13,7 @@ class Client {
      * HTTP client with local caching support
      * @var \Scrape\Client\Client
      */
-    protected $http_client;
+    public $scraper;
     
     /**
      * @var string 
@@ -43,8 +43,12 @@ class Client {
                 ),
             );
         
-        $this->http_client = new HttpClient($config, $debug);
+        $this->scraper = new Scraper($config, $debug);
     }
+    
+    public function setApiUrl($v) {
+        $this->api_url = $v;
+    }    
 
     /**
      * Endpoints are defined as classes and are instantiated here
@@ -59,7 +63,7 @@ class Client {
         
         if (class_exists($class)) {
             $c = new $class;
-            $c->setHttpClient($this->http_client);
+            $c->setHttpClient($this->scraper);
             $c->setPrefix($this->api_url);
             
             return $c;
