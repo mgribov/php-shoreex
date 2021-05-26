@@ -12,7 +12,7 @@ abstract class Endpoint {
      * 
      * @var string
      */
-    protected $prefix = 'http://api.shoreexcursionsgroup.com/';
+    protected $prefix = 'https://api.shoreexcursionsgroup.com/';
     
     /**
      * Path after prefix, example 'destinations'

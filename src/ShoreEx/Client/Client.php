@@ -18,7 +18,7 @@ class Client {
     /**
      * @var string 
      */
-    public $api_url = 'http://api.shoreexcursionsgroup.com/';
+    public $api_url = 'https://api.shoreexcursionsgroup.com/';
 
     /**
      * Values to be used by HTTP client for the actual request

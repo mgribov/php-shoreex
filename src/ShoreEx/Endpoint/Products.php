@@ -50,7 +50,12 @@ class Products extends Endpoint {
         // do not cache this data
         $this->http_client->getHttpClient()->getStorage()->setCacheTime(0);
 
-        return $this->getAll($params, 'times');
+        $ret = $this->getAll($params, 'times');
+
+        // and reset back to 1 day
+        $this->http_client->getHttpClient()->getStorage()->setCacheTime(86400);
+
+        return $ret;
     }
 
 
